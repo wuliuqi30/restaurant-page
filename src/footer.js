@@ -1,4 +1,4 @@
-import {restaurantName} from './globals.js';
+import {restaurantName,restaurantPhoneNumber,restaurantEmailAddress,restaurantAddressFirstLine,restaurantAddressSecondLine} from './globals.js';
 
 function appendFooter() {
     // Footer section:
@@ -9,20 +9,17 @@ function appendFooter() {
     // Center: Name
     // Right: Newsletter Signup
 
-    
-    const addressTop = '4444 Eightfold Way';
-    const addressBottom = 'Mahabodhi, NY 00108';
-
     const addressDOM = document.createElement('div');
+    addressDOM.classList.add('address-container');
     footerDOM.appendChild(addressDOM);
 
     const addressTopDOM = document.createElement('p');
-    addressTopDOM.textContent = addressTop;
+    addressTopDOM.textContent = restaurantAddressFirstLine;
     addressTopDOM.classList.add('address-footer');
     addressDOM.appendChild(addressTopDOM);
 
     const addressTopBottom = document.createElement('p');
-    addressTopBottom.textContent = addressBottom;
+    addressTopBottom.textContent = restaurantAddressSecondLine;
     addressTopBottom.classList.add('address-footer');
     addressDOM.appendChild(addressTopBottom);
 
@@ -31,10 +28,10 @@ function appendFooter() {
     restaurantNameDOMFooter.textContent = restaurantName;
     footerDOM.appendChild(restaurantNameDOMFooter);
 
-    const newsletterSignupDOM = document.createElement('div');
-    newsletterSignupDOM.classList.add('newsletter-signup-box');
-    newsletterSignupDOM.textContent = "newsletter placeholder";
-    footerDOM.appendChild(newsletterSignupDOM);
+    const phoneDOM = document.createElement('div');
+    phoneDOM.classList.add('phone-number');
+    phoneDOM.textContent = restaurantPhoneNumber;
+    footerDOM.appendChild(phoneDOM);
 
 }
 

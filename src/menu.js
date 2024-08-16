@@ -1,4 +1,4 @@
-import {restaurantName} from './globals.js';
+import {restaurantName,restaurantPhoneNumber,restaurantEmailAddress,restaurantAddressFirstLine,restaurantAddressSecondLine} from './globals.js';
 
 function displayMenu() {
 

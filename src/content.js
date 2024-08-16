@@ -1,7 +1,6 @@
 // Create the homepage content stuff:
 import dalImage from "./pics/dal.jpg";
-
-import {restaurantName} from './globals.js';
+import {restaurantName,restaurantPhoneNumber,restaurantEmailAddress,restaurantAddressFirstLine,restaurantAddressSecondLine} from './globals.js';
 console.log("Top Level Console.log from the exporting file");
 const a = 12;
 
@@ -10,7 +9,7 @@ function initializePage() {
     const bodyDOM = document.querySelector('body');
     const contentDOM = document.querySelector('#content');
     // // Content: top of content is always the title of the restaurant: 
-    contentDOM.style['border-top'] = 'solid';
+    // contentDOM.style['border-top'] = 'solid';
     // // Nirvana
     // // Headline: 
     
