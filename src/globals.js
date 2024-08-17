@@ -1,4 +1,4 @@
-const restaurantName = 'Nirvana';
+const restaurantName = 'Nirvani';
 const restaurantPhoneNumber = '444-444-4444';
 const restaurantEmailAddress = 'nirvanadelish@gmail.com';
 const restaurantAddressFirstLine = '4444 Eightfold Way';
