@@ -78,6 +78,7 @@ p{
 
 }
 
+
 .nav-container{
     display:flex;
     width: var(--page-width);
@@ -88,6 +89,8 @@ p{
     gap: 60px;
 
     list-style-type: none;
+    height: 70px;
+   
 }
 
 .nav-container li{
@@ -95,13 +98,6 @@ p{
     
 }
 
-.nav-button{
-    color: inherit;
-    background-color: inherit;
-    font-size: 1.4rem;
-    border:none;
-    position: relative;
-}
 
 .tab-cover{
     background-color:var(--content-bg-color);
@@ -115,7 +111,7 @@ p{
     left: -7px;
 
     width: 130%;
-    height: 65px;
+    height: 64px;
     
     display:none;
 }
@@ -123,6 +119,39 @@ p{
 .tab-cover.tab-visible{
     display:inherit;
 }
+
+.nav-button{
+    color: inherit;
+    background-color: inherit;
+    font-size: 1.4rem;
+    border:none;
+    position: relative;
+}
+
+.nav-button.tab-visible{
+    background-color:var(--content-bg-color);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-top: 2px solid;
+    border-right: 2px solid;
+    border-left: 2px solid;
+
+    position:relative; 
+    
+    
+
+    top: 14px;
+    padding-bottom: 40px;
+    padding-left: 5px;
+    padding-right: 5px;
+  
+    height: 63px;
+
+    text-align: left;
+    
+    /* display:none; */
+}
+
 
 #content{
     box-sizing: border-box;
@@ -238,6 +267,7 @@ h2{
     .nav-container{
         gap: 30px;
     }
+
     .common-footer{
         width: 400px;
         flex-direction: column;
@@ -253,30 +283,44 @@ h2{
 
 @media (max-width: 425px){
 
+
+    
     body{
         color: rgb(223, 90, 2);
     }
     #content{
         width: 250px;
     }
+    
+    h1{
+        font-size:2.5rem;
+    }
 
     .nav-container{
         gap: 10px;
-       
+        width: 250px;
+        
     }
 
-    .common-footer{
+    .nav-button{
+        
+        font-size: 1rem;
+     
+    }
+
+    .common-.nav-button{
+    color: inherit;
+    background-color: inherit;
+    font-size: 1.4rem;
+    border:none;
+    position: relative;
+}footer{
         width: 250px;
         gap:5px;
         flex-direction: column;
            
     }
-    .nav-button{
-        color: inherit;
-        background-color: inherit;
-        font-size: 1rem;
-        border:none;
-    }
+
 
     p{
         font-size: 1rem;
@@ -288,5 +332,21 @@ h2{
         border: 1px solid;
      }
      
+     .contact-container{
+        display:flex;
+        flex-direction: column;
+        width: 60%;
+        flex: 0 0 auto;
+    }
+
+    form{
+        width:200px; 
+    }
+
+    #party, #name{
+        width: 50px;
+    }
+
+
 
 }

@@ -5,6 +5,7 @@ import { displayMenu } from './menu.js';
 import { appendFooter } from "./footer.js";
 import { loadReservationPage } from "./reservations.js";
 import { displayContactTab } from "./contact.js";
+import {deleteContent} from './general-functions.js';
 import "./styles.css";
 import { restaurantName, restaurantPhoneNumber, restaurantEmailAddress, restaurantAddressFirstLine, restaurantAddressSecondLine } from './globals.js';
 
@@ -14,14 +15,6 @@ console.log(a);
 initializePage();
 appendFooter();
 
-function deleteContent() {
-    const contentDOM = document.getElementById("content")
-    let child = contentDOM.lastElementChild;
-    while (child) {
-        contentDOM.removeChild(child);
-        child = contentDOM.lastElementChild;
-    }
-}
 // Make event listeners on tabs: 
 
 const homeTabButton = document.getElementById("home-tab");
@@ -77,3 +70,4 @@ contactTabButton.lastElementChild.addEventListener("click", (event) => {
 
     contactTabButton.firstElementChild.classList.add('tab-visible');
 });
+

@@ -1,4 +1,6 @@
 import {restaurantName,restaurantPhoneNumber,restaurantEmailAddress,restaurantAddressFirstLine,restaurantAddressSecondLine} from './globals.js';
+import {deleteContent} from './general-functions.js';
+
 function loadReservationPage() {
 
     const contentDOM = document.querySelector('#content');
@@ -144,6 +146,15 @@ function loadReservationPage() {
     submitButton.classList.add('submit-reservation-button');
     submitButton.textContent = 'Submit';
     submitButton.setAttribute('type', 'submit');
+
+    submitButton.addEventListener("click", (event) => {
+
+        event.preventDefault();
+        alert("Thank you for your reservation! You will receive confirmation via email within 4 hours.")
+        deleteContent();
+        loadReservationPage();
+    });
+
     formRowButton.appendChild(submitButton);
     formRowButton.classList.add('form-row');
     fieldSet.appendChild(formRowButton);

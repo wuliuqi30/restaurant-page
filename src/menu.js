@@ -18,7 +18,7 @@ function displayMenu() {
     }
 
     class MenuItem {
-        constructor(itemName = 'Delightful Dish', price = 10, text = 'default menu item and other things in this item') {
+        constructor(itemName = 'Delightful Dish', price = 10, text = 'A scrumptious combination of delicious ingredients put together for your tasting pleasure.') {
             this.name = itemName;
             this.price = price;
             this.text = text;
