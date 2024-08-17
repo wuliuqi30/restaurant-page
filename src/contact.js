@@ -1,5 +1,5 @@
 import {restaurantName,restaurantPhoneNumber,restaurantEmailAddress,restaurantAddressFirstLine,restaurantAddressSecondLine} from './globals.js';
-function displayContactTab(){
+function loadContactPage(){
 
     const contentDOM = document.querySelector('#content');
     // Title: h1
@@ -32,4 +32,4 @@ function displayContactTab(){
     contentDOM.appendChild(contactContainer);
 };
 
-export {displayContactTab};
+export {loadContactPage};

@@ -8,11 +8,7 @@ function initializePage() {
     console.log("Running Initialize Page Function")
     const bodyDOM = document.querySelector('body');
     const contentDOM = document.querySelector('#content');
-    // // Content: top of content is always the title of the restaurant: 
-    // contentDOM.style['border-top'] = 'solid';
-    // // Nirvana
-    // // Headline: 
-    
+   
 
 
     const restaurantNameDOM = document.createElement('h1');

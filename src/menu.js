@@ -1,6 +1,6 @@
 import {restaurantName,restaurantPhoneNumber,restaurantEmailAddress,restaurantAddressFirstLine,restaurantAddressSecondLine} from './globals.js';
 
-function displayMenu() {
+function loadMenuPage() {
 
     const contentDOM = document.querySelector('#content');
     // Title: h1
@@ -79,4 +79,4 @@ function displayMenu() {
 
 };
 
-export { displayMenu };
+export { loadMenuPage };

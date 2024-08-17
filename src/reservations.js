@@ -1,5 +1,5 @@
-import {restaurantName,restaurantPhoneNumber,restaurantEmailAddress,restaurantAddressFirstLine,restaurantAddressSecondLine} from './globals.js';
-import {deleteContent} from './general-functions.js';
+import { restaurantName, restaurantPhoneNumber, restaurantEmailAddress, restaurantAddressFirstLine, restaurantAddressSecondLine } from './globals.js';
+import { deleteContent } from './general-functions.js';
 
 function loadReservationPage() {
 
@@ -20,11 +20,12 @@ function loadReservationPage() {
     const labelDay = document.createElement('label');
     labelDay.setAttribute('for', 'day');
     labelDay.textContent = 'Day:';
+    labelDay.classList.add('form-label');
     formRowDay.appendChild(labelDay);
 
     const inputDay = document.createElement('input');
     inputDay.setAttribute('type', 'date');
-    inputDay.setAttribute('required','');
+    inputDay.setAttribute('required', '');
     inputDay.setAttribute('id', 'day');
     inputDay.setAttribute('name', 'input_day');
 
@@ -35,9 +36,11 @@ function loadReservationPage() {
     inputDay.setAttribute('min', `${today.getFullYear()}-${month}-${today.getDate()}`);
 
     const latestReservation = new Date(today);
-    let latestDay = latestReservation.getDate() + 14;
-    latestReservation.setDate(latestDay);
-    inputDay.setAttribute('max', `${latestReservation.getFullYear()}-${latestReservation.getMonth()}-${latestReservation.getDate()}`);
+    latestReservation.setDate(latestReservation.getDate() + 17);
+    const latestMonth = String(latestReservation.getMonth()+1).padStart(2, '0');
+    const latestDay = String(latestReservation.getDate()).padStart(2,'0');
+    inputDay.setAttribute('max', `${latestReservation.getFullYear()}-${latestMonth}-${latestDay}`);
+    // inputDay.setAttribute('max','2024-08-31');
     formRowDay.appendChild(inputDay);
 
     fieldSet.appendChild(formRowDay);
@@ -49,25 +52,26 @@ function loadReservationPage() {
     const labelTime = document.createElement('label');
     labelTime.setAttribute('for', 'time');
     labelTime.textContent = 'Time:';
+    labelTime.classList.add('form-label');
     formRowTime.appendChild(labelTime);
 
-    // const inputTime = document.createElement('input');
-    // inputTime.setAttribute('type', 'time');
-    // inputTime.setAttribute('id', 'time');
-    // inputTime.setAttribute('name', 'input_time');
-    // inputTime.setAttribute('max',`22:00`);
-    // inputTime.setAttribute('step',900);
-    // formRowTime.appendChild(inputTime);
-    // fieldSet.appendChild(formRowTime);
 
     // Try a select instead:
     const select = document.createElement('select');
+
+
+    const optionDefault = document.createElement('option');
+    optionDefault.value = '-Choose-Time-';
+    optionDefault.text = '-Choose-Time-';
+    select.appendChild(optionDefault);
+    select.setCustomValidity('Kindly Choose a Time.');
+    const regex = /^\d{2}:\d{2} (AM|PM)$/;
 
     // Generate time options in 5-minute intervals
     for (let hour = 11; hour < 21; hour++) {
 
         if (hour < 12) {
-            for (let minute = 0; minute < 60; minute += 5) {
+            for (let minute = 0; minute < 60; minute += 15) {
                 const time = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')} AM`;
                 const option = document.createElement('option');
                 option.value = time;
@@ -75,7 +79,7 @@ function loadReservationPage() {
                 select.appendChild(option);
             }
         } else if (hour < 13) {
-            for (let minute = 0; minute < 60; minute += 5) {
+            for (let minute = 0; minute < 60; minute += 15) {
                 const time = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')} PM`;
                 const option = document.createElement('option');
                 option.value = time;
@@ -84,7 +88,7 @@ function loadReservationPage() {
 
             }
         } else {
-            for (let minute = 0; minute < 60; minute += 5) {
+            for (let minute = 0; minute < 60; minute += 15) {
                 const time = `${String(hour - 12).padStart(2, '0')}:${String(minute).padStart(2, '0')} PM`;
                 const option = document.createElement('option');
                 option.value = time;
@@ -95,7 +99,10 @@ function loadReservationPage() {
         }
 
     }
+    
+    
     formRowTime.appendChild(select);
+
     fieldSet.appendChild(formRowTime);
 
 
@@ -107,6 +114,7 @@ function loadReservationPage() {
     const labelName = document.createElement('label');
     labelName.setAttribute('for', 'name');
     labelName.textContent = 'Name:';
+    labelName.classList.add('form-label');
     formRowName.appendChild(labelName);
 
     const inputName = document.createElement('input');
@@ -115,9 +123,13 @@ function loadReservationPage() {
     inputName.setAttribute('name', 'input_name');
     inputName.setAttribute('maxlength', 15);
     inputName.setAttribute('minlength', 1);
+    inputName.setAttribute('required', '');
     formRowName.appendChild(inputName);
 
     fieldSet.appendChild(formRowName);
+
+
+    
 
     //Party Size: 
     const formRowPartySize = document.createElement('div');
@@ -126,6 +138,7 @@ function loadReservationPage() {
     const labelPartySize = document.createElement('label');
     labelPartySize.setAttribute('for', 'party');
     labelPartySize.textContent = 'Party Size:';
+    labelPartySize.classList.add('form-label');
     formRowPartySize.appendChild(labelPartySize);
 
     const inputPartySize = document.createElement('input');
@@ -134,11 +147,32 @@ function loadReservationPage() {
     inputPartySize.setAttribute('name', 'input_party');
     inputPartySize.setAttribute('maxlength', 2);
     inputPartySize.setAttribute('minlength', 1);
+    inputPartySize.setAttribute('required', '');
     const re = /^\d+$/;
     inputPartySize.setAttribute('pattern', re.source);
     formRowPartySize.appendChild(inputPartySize);
 
     fieldSet.appendChild(formRowPartySize);
+
+    // Email Address: 
+    const formRowEmail = document.createElement('div');
+    formRowEmail.classList.add('form-row');
+
+    const labelEmail = document.createElement('label');
+    labelEmail.setAttribute('for', 'name');
+    labelEmail.textContent = 'Email:';
+    labelEmail.classList.add('form-label');
+    formRowEmail.appendChild(labelEmail);
+
+    const inputEmail = document.createElement('input');
+    inputEmail.setAttribute('type', 'email');
+    inputEmail.setAttribute('id', 'email');
+    inputEmail.setAttribute('name', 'input_email');
+    inputEmail.setAttribute('required', '');
+    formRowEmail.appendChild(inputEmail);
+
+    fieldSet.appendChild(formRowEmail);
+
 
     // Submit Button
     const formRowButton = document.createElement('div');
@@ -147,13 +181,6 @@ function loadReservationPage() {
     submitButton.textContent = 'Submit';
     submitButton.setAttribute('type', 'submit');
 
-    submitButton.addEventListener("click", (event) => {
-
-        event.preventDefault();
-        alert("Thank you for your reservation! You will receive confirmation via email within 4 hours.")
-        deleteContent();
-        loadReservationPage();
-    });
 
     formRowButton.appendChild(submitButton);
     formRowButton.classList.add('form-row');
@@ -162,6 +189,52 @@ function loadReservationPage() {
     form.appendChild(fieldSet);
     contentDOM.appendChild(form);
 
+    function checkTimeValidity(){
+        if (regex.test(select.value)){
+            select.setCustomValidity('');
+        } else {
+            select.setCustomValidity('Kindly Choose a Time.');
+        }
+
+    }
+
+    select.addEventListener('click',(event)=>{
+        checkTimeValidity();
+    })
+
+    submitButton.addEventListener('click',(event)=>{
+        console.log('Clicked Submit');
+    })
+
+
+    form.addEventListener("submit", (event) => {
+
+        event.preventDefault();
+
+        console.log(submitButton);
+        console.log(form);
+        
+
+        checkTimeValidity()
+        
+        console.log(select.validity);
+
+        if (!inputDay.validity.valid){
+            inputDay.setCustomValidity('Kindly Choose a Day.');
+        }
+
+
+        if (form.checkValidity()){
+            alert("Thank you for your reservation! You will receive confirmation via email within 4 hours.");
+            deleteContent();
+            loadReservationPage();
+        }
+        
+        
+
+    });
+
+    
 
 
 

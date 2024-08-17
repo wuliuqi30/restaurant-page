@@ -1,10 +1,10 @@
 // index.js
-import 'whatwg-fetch'; // or 'node-fetch'
+// import 'whatwg-fetch'; // or 'node-fetch'
 import { a, initializePage } from './content.js';
-import { displayMenu } from './menu.js';
+import { loadMenuPage } from './menu.js';
 import { appendFooter } from "./footer.js";
 import { loadReservationPage } from "./reservations.js";
-import { displayContactTab } from "./contact.js";
+import { loadContactPage } from "./contact.js";
 import {deleteContent} from './general-functions.js';
 import "./styles.css";
 import { restaurantName, restaurantPhoneNumber, restaurantEmailAddress, restaurantAddressFirstLine, restaurantAddressSecondLine } from './globals.js';
@@ -35,7 +35,7 @@ const menuTabButton = document.getElementById("menu-tab");
 
 menuTabButton.lastElementChild.addEventListener("click", (event) => {
     deleteContent();
-    displayMenu();
+    loadMenuPage();
 
     // Reset tab: 
     const tab = document.querySelector('.tab-visible');
@@ -62,7 +62,7 @@ const contactTabButton = document.getElementById("contact-tab");
 
 contactTabButton.lastElementChild.addEventListener("click", (event) => {
     deleteContent();
-    displayContactTab();
+    loadContactPage();
 
     // Reset tab: 
     const tab = document.querySelector('.tab-visible');
